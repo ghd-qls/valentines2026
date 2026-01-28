@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8f0 50%, #fff9e6 100%);
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floral decorations */
+        .floral-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 50px;
+            opacity: 0.25;
+        }
+
+        .flower-1 { top: 10%; left: 8%; transform: rotate(-15deg); }
+        .flower-2 { top: 15%; right: 12%; transform: rotate(25deg); }
+        .flower-3 { top: 25%; left: 5%; transform: rotate(40deg); }
+        .flower-4 { top: 35%; right: 8%; transform: rotate(-20deg); }
+        .flower-5 { top: 45%; left: 3%; transform: rotate(10deg); }
+        .flower-6 { top: 55%; right: 5%; transform: rotate(-35deg); }
+        .flower-7 { top: 65%; left: 10%; transform: rotate(20deg); }
+        .flower-8 { top: 75%; right: 15%; transform: rotate(-10deg); }
+        .flower-9 { top: 85%; left: 7%; transform: rotate(30deg); }
+        .flower-10 { top: 90%; right: 10%; transform: rotate(-25deg); }
+        .flower-11 { top: 20%; left: 85%; transform: rotate(15deg); font-size: 40px; }
+        .flower-12 { top: 40%; left: 90%; transform: rotate(-30deg); font-size: 45px; }
+        .flower-13 { top: 60%; left: 15%; transform: rotate(45deg); font-size: 55px; }
+        .flower-14 { top: 30%; right: 20%; transform: rotate(-40deg); font-size: 42px; }
+        .flower-15 { top: 50%; left: 50%; transform: rotate(10deg); font-size: 38px; opacity: 0.15; }
+        .flower-16 { top: 70%; right: 25%; transform: rotate(35deg); font-size: 48px; }
+        .flower-17 { top: 12%; left: 40%; transform: rotate(-18deg); font-size: 44px; }
+        .flower-18 { top: 80%; left: 60%; transform: rotate(22deg); font-size: 46px; }
+
+        /* Floating petals */
+        .petal {
+            position: fixed;
+            width: 12px;
+            height: 18px;
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 50%, transparent 100%);
+            border-radius: 50% 0 50% 50%;
+            animation: floatPetal 15s infinite;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            top: -100px; /* Start above viewport */
+        }
+
+        .petal:nth-child(odd) {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, transparent 100%);
+        }
+
+        .petal:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 12s; }
+        .petal:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 14s; }
+        .petal:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 13s; }
+        .petal:nth-child(4) { left: 35%; animation-delay: 1s; animation-duration: 15s; }
+        .petal:nth-child(5) { left: 45%; animation-delay: 6s; animation-duration: 11s; }
+        .petal:nth-child(6) { left: 55%; animation-delay: 3s; animation-duration: 16s; }
+        .petal:nth-child(7) { left: 65%; animation-delay: 8s; animation-duration: 13s; }
+        .petal:nth-child(8) { left: 75%; animation-delay: 5s; animation-duration: 14s; }
+        .petal:nth-child(9) { left: 85%; animation-delay: 10s; animation-duration: 12s; }
+        .petal:nth-child(10) { left: 95%; animation-delay: 7s; animation-duration: 15s; }
+        .petal:nth-child(11) { left: 10%; animation-delay: 9s; animation-duration: 13s; }
+        .petal:nth-child(12) { left: 30%; animation-delay: 11s; animation-duration: 14s; }
+        .petal:nth-child(13) { left: 50%; animation-delay: 2.5s; animation-duration: 12s; }
+        .petal:nth-child(14) { left: 70%; animation-delay: 4.5s; animation-duration: 16s; }
+        .petal:nth-child(15) { left: 90%; animation-delay: 6.5s; animation-duration: 11s; }
+        .petal:nth-child(16) { left: 8%; animation-delay: 1.5s; animation-duration: 15s; }
+        .petal:nth-child(17) { left: 22%; animation-delay: 3.5s; animation-duration: 13s; }
+        .petal:nth-child(18) { left: 38%; animation-delay: 5.5s; animation-duration: 14s; }
+        .petal:nth-child(19) { left: 52%; animation-delay: 7.5s; animation-duration: 12s; }
+        .petal:nth-child(20) { left: 68%; animation-delay: 9.5s; animation-duration: 16s; }
+        .petal:nth-child(21) { left: 78%; animation-delay: 0.5s; animation-duration: 11s; }
+        .petal:nth-child(22) { left: 92%; animation-delay: 10.5s; animation-duration: 15s; }
+        .petal:nth-child(23) { left: 18%; animation-delay: 8.5s; animation-duration: 13s; }
+        .petal:nth-child(24) { left: 42%; animation-delay: 12s; animation-duration: 14s; }
+        .petal:nth-child(25) { left: 62%; animation-delay: 13s; animation-duration: 12s; }
+        .petal:nth-child(26) { left: 12%; animation-delay: 0.8s; animation-duration: 15s; }
+        .petal:nth-child(27) { left: 28%; animation-delay: 2.8s; animation-duration: 13s; }
+        .petal:nth-child(28) { left: 48%; animation-delay: 4.8s; animation-duration: 14s; }
+        .petal:nth-child(29) { left: 58%; animation-delay: 6.8s; animation-duration: 12s; }
+        .petal:nth-child(30) { left: 72%; animation-delay: 8.8s; animation-duration: 16s; }
+        .petal:nth-child(31) { left: 82%; animation-delay: 1.2s; animation-duration: 11s; }
+        .petal:nth-child(32) { left: 88%; animation-delay: 11.2s; animation-duration: 15s; }
+        .petal:nth-child(33) { left: 6%; animation-delay: 9.2s; animation-duration: 13s; }
+        .petal:nth-child(34) { left: 32%; animation-delay: 13.2s; animation-duration: 14s; }
+        .petal:nth-child(35) { left: 44%; animation-delay: 14s; animation-duration: 12s; }
+        .petal:nth-child(36) { left: 66%; animation-delay: 1.8s; animation-duration: 15s; }
+        .petal:nth-child(37) { left: 76%; animation-delay: 3.2s; animation-duration: 13s; }
+        .petal:nth-child(38) { left: 14%; animation-delay: 5.8s; animation-duration: 14s; }
+        .petal:nth-child(39) { left: 54%; animation-delay: 7.2s; animation-duration: 12s; }
+        .petal:nth-child(40) { left: 94%; animation-delay: 9.8s; animation-duration: 16s; }
+
+        @keyframes floatPetal {
+            0% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.7; 
+            }
+            90% { 
+                opacity: 0.7; 
+            }
+            100% { 
+                transform: translateY(calc(100vh + 100px)) rotate(360deg) translateX(50px); 
+                opacity: 0; 
+            }
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Initial question screen */
+        .question-screen {
+            animation: fadeIn 1s ease-in;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 3px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .question-screen h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #d4758f 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .floral-divider {
+            width: 200px;
+            height: 60px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .floral-divider svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #666;
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .no-btn {
+            background: #f0f0f0;
+            color: #999;
+        }
+
+        .no-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* Ticket screen */
+        .ticket-screen {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .celebration {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: celebrate 1s ease-in-out;
+        }
+
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2) rotate(-5deg); }
+            75% { transform: scale(1.2) rotate(5deg); }
+        }
+
+        .ticket-screen h2 {
+            font-size: 2em;
+            background: linear-gradient(135deg, #d4758f 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .ticket-screen p {
+            font-size: 1.1em;
+            color: #666;
+            margin: 15px 0;
+        }
+
+        /* Event Ticket Design */
+        .event-ticket {
+            background: linear-gradient(135deg, #ffffff 0%, #fffbf7 100%);
+            border-radius: 20px;
+            padding: 0;
+            margin: 30px 0;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 117, 143, 0.2);
+        }
+
+        /* Decorative top gradient */
+        .ticket-header-gradient {
+            background: linear-gradient(135deg, #d4758f 0%, #ffd700 100%);
+            height: 120px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .ticket-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 8px;
+            filter: brightness(0) invert(1);
+        }
+
+        .ticket-presents {
+            color: white;
+            font-size: 0.85em;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.95;
+        }
+
+        .ticket-body {
+            padding: 30px;
+            position: relative;
+        }
+
+        .event-title {
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #d4758f 0%, #ff69b4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .event-subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .ticket-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 117, 143, 0.3), transparent);
+            margin: 25px 0;
+        }
+
+        .event-details {
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 18px 0;
+            align-items: flex-start;
+        }
+
+        .detail-item {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 0.75em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 1.05em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .detail-value-large {
+            font-size: 1.2em !important;
+            background: linear-gradient(135deg, #d4758f 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .event-schedule {
+            background: linear-gradient(135deg, #fff9f9 0%, #fffef5 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-title {
+            font-size: 0.9em;
+            color: #d4758f;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .journey-trail {
+            position: relative;
+            padding: 10px 0;
+        }
+
+        /* The connecting trail line */
+        .journey-trail::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 35px;
+            bottom: 35px;
+            width: 3px;
+            background: linear-gradient(180deg, 
+                #ffd700 0%, 
+                #ffb6c1 25%, 
+                #ff69b4 50%, 
+                #ffb6c1 75%, 
+                #ffd700 100%
+            );
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .journey-stop {
+            position: relative;
+            padding-left: 65px;
+            margin-bottom: 35px;
+            z-index: 1;
+        }
+
+        .journey-stop:last-child {
+            margin-bottom: 0;
+        }
+
+        .stop-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fff 0%, #fffbf7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid;
+            z-index: 2;
+        }
+
+        .journey-stop:nth-child(1) .stop-marker {
+            border-color: #ffd700;
+        }
+
+        .journey-stop:nth-child(2) .stop-marker {
+            border-color: #ffb6c1;
+        }
+
+        .journey-stop:nth-child(3) .stop-marker {
+            border-color: #ff69b4;
+        }
+
+        .journey-stop:nth-child(4) .stop-marker {
+            border-color: #ffc0cb;
+        }
+
+        .journey-stop:nth-child(5) .stop-marker {
+            border-color: #ffd700;
+        }
+
+        .stop-content {
+            background: white;
+            padding: 15px 18px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .journey-stop:nth-child(1) .stop-content {
+            border-color: #ffd700;
+        }
+
+        .journey-stop:nth-child(2) .stop-content {
+            border-color: #ffb6c1;
+        }
+
+        .journey-stop:nth-child(3) .stop-content {
+            border-color: #ff69b4;
+        }
+
+        .journey-stop:nth-child(4) .stop-content {
+            border-color: #ffc0cb;
+        }
+
+        .journey-stop:nth-child(5) .stop-content {
+            border-color: #ffd700;
+        }
+
+        .stop-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stop-time {
+            font-size: 0.8em;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .stop-location {
+            font-size: 1em;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .stop-description {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .ticket-tear-line {
+            height: 30px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 10px,
+                rgba(212, 117, 143, 0.1) 10px,
+                rgba(212, 117, 143, 0.1) 20px
+            );
+            position: relative;
+            margin: 0 -1px;
+        }
+
+        .ticket-tear-line::before,
+        .ticket-tear-line::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8f0 50%, #fff9e6 100%);
+            border-radius: 50%;
+            top: 5px;
+        }
+
+        .ticket-tear-line::before {
+            left: -10px;
+        }
+
+        .ticket-tear-line::after {
+            right: -10px;
+        }
+
+        .ticket-footer {
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .barcode-container {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .barcode-placeholder {
+            background: linear-gradient(90deg, #333 2px, transparent 2px) 0 0,
+                        linear-gradient(90deg, #333 4px, transparent 4px) 0 0,
+                        linear-gradient(90deg, #333 3px, transparent 3px) 0 0;
+            background-size: 8px 100%, 16px 100%, 24px 100%;
+            height: 70px;
+            margin: 0 auto;
+            max-width: 250px;
+            opacity: 0.7;
+        }
+
+        .ticket-number {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 10px;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .romantic-note {
+            background: linear-gradient(135deg, rgba(212, 117, 143, 0.08) 0%, rgba(255, 215, 0, 0.08) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(212, 117, 143, 0.15);
+        }
+
+        .romantic-note p {
+            font-size: 1em;
+            color: #666;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .wallet-btn {
+            background: #000;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Georgia', serif;
+        }
+
+        .wallet-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #1a1a1a;
+        }
+
+        .wallet-icon {
+            font-size: 1.3em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            .question-screen h1 {
+                font-size: 2em;
+            }
+
+            .question-screen {
+                padding: 40px 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .ticket-body {
+                padding: 25px 20px;
+            }
+
+            .event-title {
+                font-size: 1.5em;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .floral-decoration {
+                font-size: 35px;
+            }
+
+            /* Hide some flowers on mobile for cleaner look */
+            .flower-11, .flower-13, .flower-15, .flower-17 {
+                display: none;
+            }
+
+            .ticket-logo {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+
+<audio id="loveSong" preload="auto">
+    <source src="understand.mp3" type="audio/mpeg">
+</audio>
+
+<body>
+    <!-- Scattered flower emoji decorations -->
+    <div class="floral-decoration flower-1">🌷</div>
+    <div class="floral-decoration flower-2">🌸</div>
+    <div class="floral-decoration flower-3">🌺</div>
+    <div class="floral-decoration flower-4">🌹</div>
+    <div class="floral-decoration flower-5">🌼</div>
+    <div class="floral-decoration flower-6">🌷</div>
+    <div class="floral-decoration flower-7">🌸</div>
+    <div class="floral-decoration flower-8">🌺</div>
+    <div class="floral-decoration flower-9">🌹</div>
+    <div class="floral-decoration flower-10">🌼</div>
+    <div class="floral-decoration flower-11">🌷</div>
+    <div class="floral-decoration flower-12">🌸</div>
+    <div class="floral-decoration flower-13">🌺</div>
+    <div class="floral-decoration flower-14">🌹</div>
+    <div class="floral-decoration flower-15">🌼</div>
+    <div class="floral-decoration flower-16">🌷</div>
+    <div class="floral-decoration flower-17">🌸</div>
+    <div class="floral-decoration flower-18">🌺</div>
+
+    <!-- Floating petals -->
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+
+    <div class="container">
+        <!-- Question Screen -->
+        <div class="question-screen" id="questionScreen">
+            <h1><br>Will You Be My Valentine?</h1>
+            
+            <div class="floral-divider">
+                <svg viewBox="0 0 200 60">
+                    <g>
+                        <!-- Center flower -->
+                        <circle cx="100" cy="30" r="8" fill="#ffd700"/>
+                        <circle cx="92" cy="25" r="6" fill="#ffed4e"/>
+                        <circle cx="108" cy="25" r="6" fill="#ffed4e"/>
+                        <circle cx="95" cy="38" r="6" fill="#ffb6c1"/>
+                        <circle cx="105" cy="38" r="6" fill="#ffc0cb"/>
+                        
+                        <!-- Left flowers -->
+                        <ellipse cx="60" cy="30" rx="8" ry="15" fill="#ffb6c1" transform="rotate(-20 60 30)"/>
+                        <ellipse cx="60" cy="30" rx="8" ry="15" fill="#ffc0cb" transform="rotate(20 60 30)"/>
+                        
+                        <!-- Right flowers -->
+                        <ellipse cx="140" cy="30" rx="8" ry="15" fill="#ffd700" transform="rotate(-20 140 30)"/>
+                        <ellipse cx="140" cy="30" rx="8" ry="15" fill="#ffed4e" transform="rotate(20 140 30)"/>
+                        
+                        <!-- Small accents -->
+                        <circle cx="30" cy="30" r="4" fill="#ff69b4" opacity="0.6"/>
+                        <circle cx="170" cy="30" r="4" fill="#ffd700" opacity="0.6"/>
+                    </g>
+                </svg>
+            </div>
+            
+            
+            <div class="buttons">
+                <button class="yes-btn" onclick="showTicket()">Yes! ❤️</button>
+                <button class="no-btn" id="noBtn">No</button>
+            </div>
+        </div>
+
+        <!-- Ticket Screen -->
+        <div class="ticket-screen" id="ticketScreen">
+            
+            <h2>Yay! Get Ready for Our Adventure!</h2>
+            
+            <p>Here's your ticket for our Valentine's Day celebration together...</p>
+
+            <!-- Event Ticket -->
+            <div class="event-ticket">
+                <div class="ticket-header-gradient">
+                    <svg class="ticket-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="100" y="25" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">Ticketmaster</text>
+                    </svg>
+                    <div class="ticket-presents">P R E S E N T S</div>
+                </div>
+
+                <div class="ticket-body">
+                    <div class="event-title">A Valentine's Day Journey</div>
+                    <div class="event-subtitle">An Unforgettable Experience with You ✨</div>
+
+                    <div class="ticket-divider"></div>
+
+                    <div class="event-details">
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Date</div>
+                                <div class="detail-value">Monday, 3 February 2025</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Doors Open</div>
+                                <div class="detail-value">1:00 PM</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Venue</div>
+                                <div class="detail-value">Hillview MRT Station</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Ticket Holder</div>
+                                <div class="detail-value detail-value-large">Belinda</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Guest</div>
+                                <div class="detail-value detail-value-large">Hong Bin</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <div class="detail-label">Section</div>
+                                <div class="detail-value">VIP Love</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Seat</div>
+                                <div class="detail-value">Beside Me ❤️</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-schedule">
+                        <div class="schedule-title">Our Journey Together</div>
+                        <div class="journey-trail">
+                            <div class="journey-stop">
+                                <div class="stop-marker">🍝</div>
+                                <div class="stop-content">
+                                    <div class="stop-time">1:00 PM</div>
+                                    <div class="stop-location">iO Italian Osteria</div>
+                                    <div class="stop-description">Lunch at HillV2</div>
+                                </div>
+                            </div>
+                            
+                            <div class="journey-stop">
+                                <div class="stop-marker">🎨</div>
+                                <div class="stop-content">
+                                    <div class="stop-time">Afternoon</div>
+                                    <div class="stop-location">Haji Lane</div>
+                                    <div class="stop-description">Caricature Fun</div>
+                                </div>
+                            </div>
+                            
+                            <div class="journey-stop">
+                                <div class="stop-marker">🍨</div>
+                                <div class="stop-content">
+                                    <div class="stop-time">Mid-Afternoon</div>
+                                    <div class="stop-location">Birds of Paradise</div>
+                                    <div class="stop-description">Sweet Dessert</div>
+                                </div>
+                            </div>
+                            
+                            <div class="journey-stop">
+                                <div class="stop-marker">🌿</div>
+                                <div class="stop-content">
+                                    <div class="stop-time">Evening</div>
+                                    <div class="stop-location">Gardens by the Bay</div>
+                                    <div class="stop-description">Romantic Stroll</div>
+                                </div>
+                            </div>
+                            
+                            <div class="journey-stop">
+                                <div class="stop-marker">🌅</div>
+                                <div class="stop-content">
+                                    <div class="stop-time">Sunset</div>
+                                    <div class="stop-location">Marina Barrage</div>
+                                    <div class="stop-description">Watch the Sunset Together</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="romantic-note">
+                        <p>"Every moment with you is an adventure worth celebrating. Thank you for saying yes to this journey with me." 💕</p>
+                    </div>
+                </div>
+
+                <div class="ticket-tear-line"></div>
+
+                <div class="ticket-footer">
+                    <div class="barcode-container">
+                        <div class="barcode-placeholder"></div>
+                    </div>
+                    <div class="ticket-number">TICKET #LOVE-2025-0214-VD</div>
+                </div>
+            </div>
+
+            <a href="valentines-pass.pkpass" class="wallet-btn">
+                <span class="wallet-icon">📱</span>
+                Add to Apple Wallet
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showTicket() {
+            const questionScreen = document.getElementById('questionScreen');
+            const ticketScreen = document.getElementById('ticketScreen');
+            const song = document.getElementById('loveSong');
+
+            questionScreen.style.display = 'none';
+            ticketScreen.style.display = 'block';
+
+            // Play music (mobile safe)
+            song.volume = 0.8;
+            song.play().catch(() => {
+                console.log("Audio play blocked until user interaction.");
+            });
+
+            // Confetti 🎉
+            createConfetti();
+        }
+        
+        function createConfetti() {
+            const confettiCount = 50;
+            const colors = ['#ffd700', '#ffb6c1', '#ff69b4', '#ffc0cb', '#ffe4e1'];
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.opacity = Math.random();
+                confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                confetti.style.animation = `fall ${2 + Math.random() * 3}s linear`;
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '9999';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Add fall animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.querySelector('.yes-btn');
+
+        const noMessages = [
+            "u sure?",
+            "rlly sure?",
+            "think again 😶",
+            "Last Chance Eh.",
+            "K STOP 😅",
+            "jus say yes bro"
+        ];
+
+        let noClickCount = 0;
+        let scale = 1;
+
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Change text
+            noBtn.textContent = noMessages[Math.min(noClickCount, noMessages.length - 1)];
+
+            // Shrink slightly
+            scale -= 0.05;
+            noBtn.style.transform = `scale(${scale})`;
+
+            // Move button
+            moveButton();
+
+            noClickCount++;
+
+            // After last message, force yes
+            if (noClickCount >= noMessages.length) {
+                setTimeout(() => {
+                    showTicket();
+                }, 600);
+            }
+        });
+
+        function moveButton() {
+            const padding = 16;
+            const btnRect = noBtn.getBoundingClientRect();
+
+            const maxX = window.innerWidth - btnRect.width - padding;
+            const maxY = window.innerHeight - btnRect.height - padding;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+            noBtn.style.transition = 'left 0.2s ease, top 0.2s ease, transform 0.2s ease';
+        }
+    </script>
+</body>
+</html>
